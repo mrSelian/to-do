@@ -24,7 +24,7 @@
     <form action="/create" method="post" >
         <input type="text" name="title" placeholder="Заголовок TO-DO">
         <br>
-        <input type="text" name="text" placeholder="Текст">
+        <textarea name="text" placeholder="Текст" cols="22" rows="6"> </textarea>
         <br>
         <input type="submit" value="Создать">
     </form>
