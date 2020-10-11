@@ -14,8 +14,13 @@
     <h3><?= $post['title'] ?></h3>
     <div><?= $post['text'] ?></div>
     <div><a href='/delete?index=<?= $index ?>'>Удалить задачу</a></div>
+    <br>
 <?php endif; ?>
 <?php endforeach; ?>
+
+<br>
+<br>
+<a href="/">Показать текущие задачи</a>
 
 </body>
 </html>

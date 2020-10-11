@@ -16,6 +16,7 @@
         <div><?= $post['text'] ?></div>
             <div><a href='/complete?index=<?= $post['id'] ?>'>Завершить задачу</a></div>
         <div><a href='/delete?index=<?= $index ?>'>Удалить задачу</a></div>
+        <br>
     <?php endif; ?>
     <?php endforeach; ?>
 

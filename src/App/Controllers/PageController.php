@@ -21,7 +21,7 @@ class PageController
     public function completed()
     {
             return $this->view->render('completed', [
-                'title' => 'My To-Do List (завершенные задачи)',
+                'title' => 'My To-Do List (завершённые задачи)',
                 'posts' => $this->toDoRepository->getAll()
             ]);
     }
