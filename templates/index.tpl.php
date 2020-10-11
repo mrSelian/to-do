@@ -11,19 +11,25 @@
     <h1><?= $title ?></h1>
 
     <?php foreach ($posts as $index => $post): ?>
+    <?php if ($post['completed'] == false ): ?>
         <h3><?= $post['title'] ?></h3>
         <div><?= $post['text'] ?></div>
-        <div><a href='/delete?index=<?= $index ?>'>Удалить</a></div>
+            <div><a href='/complete?index=<?= $post['id'] ?>'>Завершить задачу</a></div>
+        <div><a href='/delete?index=<?= $index ?>'>Удалить задачу</a></div>
+    <?php endif; ?>
     <?php endforeach; ?>
 
 
-    <form action="/create" method="post">
+    <form action="/create" method="post" >
         <input type="text" name="title" placeholder="Заголовок TO-DO">
         <br>
         <input type="text" name="text" placeholder="Текст">
         <br>
         <input type="submit" value="Создать">
     </form>
+<br>
+    <br>
+    <a href="/completed">Показать завершённые задачи</a>
 
 </body>
 </html>
