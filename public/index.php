@@ -1,10 +1,10 @@
 <?php
 
+require_once __DIR__ . '/../autoload.php';
+
 use Vendor\Kernel;
 
 session_start();
-
-require_once __DIR__ . '/../autoload.php';
 
 $kernel = (new Kernel())
     ->withBindings(require_once __DIR__ . '/../bindings.php')

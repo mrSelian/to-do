@@ -9,5 +9,21 @@
 </head>
 <body>
     <h1><?= $title ?></h1>
+
+    <?php foreach ($posts as $index => $post): ?>
+        <h3><?= $post['title'] ?></h3>
+        <div><?= $post['text'] ?></div>
+        <div><a href='/delete?index=<?= $index ?>'>Удалить</a></div>
+    <?php endforeach; ?>
+
+
+    <form action="/create" method="post">
+        <input type="text" name="title" placeholder="Заголовок TO-DO">
+        <br>
+        <input type="text" name="text" placeholder="Текст">
+        <br>
+        <input type="submit" value="Создать">
+    </form>
+
 </body>
 </html>
