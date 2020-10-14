@@ -10,11 +10,13 @@ class PageController
 {
     protected ViewInterface $view;
     protected ToDoRepositoryInterface $toDoRepository;
+    protected ToDoController $toDoController;
 
-    public function __construct(ViewInterface $view, ToDoRepositoryInterface $toDoRepository)
+    public function __construct(ViewInterface $view, ToDoRepositoryInterface $toDoRepository,ToDoController $toDoController)
     {
         $this->view = $view;
         $this->toDoRepository=$toDoRepository;
+        $this->toDoController=$toDoController;
 
     }
 
@@ -36,7 +38,7 @@ class PageController
     
     public function create()
     {
-        $this->toDoRepository->create([
+        $this->toDoController->create([
             'id' => uniqid(),
             'title' => $_POST['title'] ?? '',
             'text' => $_POST['text'] ?? '',
@@ -51,7 +53,7 @@ class PageController
     {
         $index = $_GET['index'] ?? null;
         
-        $this->toDoRepository->complete($index);
+        $this->toDoController->complete($index);
         
         header('Location: /');
         exit;
@@ -61,7 +63,7 @@ class PageController
     {
         $index = $_GET['index'] ?? null;
 
-        $this->toDoRepository->delete($index);
+        $this->toDoController->delete($index);
 
         header('Location: /');
         exit;
