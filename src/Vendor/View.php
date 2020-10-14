@@ -2,7 +2,9 @@
 
 namespace Vendor;
 
-class View
+use Vendor\Interfaces\ViewInterface;
+
+class View implements ViewInterface
 {
     protected $path;
     protected $extension;

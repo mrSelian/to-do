@@ -2,6 +2,8 @@
 
 namespace Vendor;
 
+use Vendor\Interfaces\ViewInterface;
+
 class Kernel
 {
     protected $bindings = [];
@@ -35,7 +37,7 @@ class Kernel
         $container
             ->bind(Config::class, $config)
             ->bind(Router::class, $router)
-            ->bind(View::class, fn() => new View($config->get('templates.path')));
+            ->bind(ViewInterface::class, fn() => new View($config->get('templates.path')));
 
         $handler = $router->match();
         if (is_array($handler)) {

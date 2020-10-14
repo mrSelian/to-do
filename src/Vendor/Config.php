@@ -2,7 +2,9 @@
 
 namespace Vendor;
 
-class Config
+use Vendor\Interfaces\ConfigInterface;
+
+class Config implements ConfigInterface
 {
     protected $items = [];
 

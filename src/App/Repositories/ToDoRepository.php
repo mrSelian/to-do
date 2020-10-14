@@ -2,7 +2,9 @@
 
 namespace App\Repositories;
 
-class ToDoRepository
+use Vendor\Interfaces\ToDoRepositoryInterface;
+
+class ToDoRepository implements ToDoRepositoryInterface
 {
     protected $fileName = __DIR__ . '/../../../db/posts.json';
 

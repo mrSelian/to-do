@@ -2,7 +2,9 @@
 
 namespace Vendor;
 
-class Router
+use Vendor\Interfaces\RouterInterface;
+
+class Router implements RouterInterface
 {
     protected $handlers = [];
 
