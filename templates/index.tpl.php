@@ -9,15 +9,24 @@
 </head>
 <body>
     <h1><?= $title ?></h1>
-
     <?php foreach ($posts as $index => $post): ?>
-    <?php if ($post['completed'] == false ): ?>
-        <h3><?= $post['title'] ?></h3>
-        <div><?= $post['text'] ?></div>
-            <div><a href='/complete?index=<?= $post['id'] ?>'>Завершить задачу</a></div>
-        <div><a href='/delete?index=<?= $index ?>'>Удалить задачу</a></div>
-        <br>
+    <?php if (isset($_GET['completed']) && $_GET['completed'] = true): ?>
+            <?php if ($post['completed'] == true ): ?>
+                <h3><?= $post['title'] ?></h3>
+                <div><?= $post['text'] ?></div>
+                <div><a href='/delete?index=<?= $index ?>'>Удалить задачу</a></div>
+                <br>
     <?php endif; ?>
+        <?php else: ?>
+        <?php if ($post['completed'] == false ): ?>
+            <h3><?= $post['title'] ?></h3>
+            <div><?= $post['text'] ?></div>
+            <div><a href='/complete?index=<?= $post['id'] ?>'>Завершить задачу</a></div>
+            <div><a href='/delete?index=<?= $index ?>'>Удалить задачу</a></div>
+            <br>
+
+        <?php endif; ?>
+        <?php endif; ?>
     <?php endforeach; ?>
 
 
@@ -30,7 +39,10 @@
     </form>
 <br>
     <br>
-    <a href="/completed">Показать завершённые задачи</a>
-
+<?php if (!isset($_GET['completed'])): ?>
+    <a href="/?completed=true">Показать завершённые задачи</a>
+<?php else: ?>
+    <a href="/">Показать текущие задачи</a>
+<?php endif; ?>
 </body>
 </html>
