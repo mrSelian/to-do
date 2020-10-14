@@ -10,7 +10,7 @@
 <body>
     <h1><?= $title ?></h1>
     <?php foreach ($posts as $index => $post): ?>
-    <?php if (isset($_GET['completed']) && $_GET['completed'] = true): ?>
+    <?php if (isset($_GET['completed'])): ?>
             <?php if ($post['completed'] == true ): ?>
                 <h3><?= $post['title'] ?></h3>
                 <div><?= $post['text'] ?></div>
@@ -39,10 +39,11 @@
     </form>
 <br>
     <br>
-<?php if (!isset($_GET['completed'])): ?>
-    <a href="/?completed=true">Показать завершённые задачи</a>
-<?php else: ?>
+<?php if (isset($_GET['completed'])): ?>
     <a href="/">Показать текущие задачи</a>
-<?php endif; ?>
+    <?php else: ?>
+        <a href="/?completed">Показать завершённые задачи</a>
+    <?php endif; ?>
+
 </body>
 </html>
