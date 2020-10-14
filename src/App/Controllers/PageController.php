@@ -2,16 +2,16 @@
 
 namespace App\Controllers;
 
-use App\Repositories\ToDoRepository;
+use Vendor\Interfaces\ToDoRepositoryInterface;
+use Vendor\Interfaces\ViewInterface;
 
-use Vendor\View;
 
 class PageController
 {
-    protected View $view;
-    protected ToDoRepository $toDoRepository;
+    protected ViewInterface $view;
+    protected ToDoRepositoryInterface $toDoRepository;
 
-    public function __construct(View $view, ToDoRepository $toDoRepository)
+    public function __construct(ViewInterface $view, ToDoRepositoryInterface $toDoRepository)
     {
         $this->view = $view;
         $this->toDoRepository=$toDoRepository;
