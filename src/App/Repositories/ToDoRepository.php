@@ -6,11 +6,16 @@ use Vendor\Interfaces\ToDoRepositoryInterface;
 
 class ToDoRepository implements ToDoRepositoryInterface
 {
-    protected $fileName = __DIR__ . '/../../../db/posts.json';
+    protected $postSource;
+
+    public function __construct($postSource)
+    {
+        $this->postSource = $postSource;
+    }
 
     public function getAll()
     {
-        return json_decode(file_get_contents($this->fileName), true);
+        return json_decode(file_get_contents($this->postSource), true);
     }
 
     public function getById($id)
@@ -50,6 +55,6 @@ class ToDoRepository implements ToDoRepositoryInterface
 
     public function saveAll(array $posts)
     {
-        file_put_contents($this->fileName, json_encode($posts, JSON_UNESCAPED_UNICODE));
+        file_put_contents($this->postSource, json_encode($posts, JSON_UNESCAPED_UNICODE));
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Vendor;
 
+use App\Repositories\ToDoRepository;
+use Vendor\Interfaces\ToDoRepositoryInterface;
 use Vendor\Interfaces\ViewInterface;
 
 class Kernel
@@ -37,7 +39,8 @@ class Kernel
         $container
             ->bind(Config::class, $config)
             ->bind(Router::class, $router)
-            ->bind(ViewInterface::class, fn() => new View($config->get('templates.path')));
+            ->bind(ViewInterface::class, fn() => new View($config->get('templates.path')))
+            ->bind(ToDoRepositoryInterface::class, fn()=> new ToDoRepository($config->get('posts.source')));
 
         $handler = $router->match();
         if (is_array($handler)) {
