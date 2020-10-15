@@ -27,31 +27,6 @@ class ToDoRepository implements ToDoRepositoryInterface
         return null;
     }
 
-    public function create(array $post)
-    {
-        $posts = $this->getAll();
-        array_unshift($posts, $post);
-        $this->saveAll($posts);
-    }
-
-    public function complete($index)
-    {
-        $posts = $this->getAll();
-        foreach ($posts as $prop => &$post){
-            if ($post['id'] == $index){
-                $post['completed'] = true;
-            }
-            $this->saveAll($posts);
-        }
-
-    }
-    
-    public function delete($index)
-    {
-        $posts = $this->getAll();
-        array_splice($posts, $index, 1);
-        $this->saveAll($posts);
-    }
 
     public function saveAll(array $posts)
     {
