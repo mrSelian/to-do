@@ -1,11 +1,11 @@
 <?php
 
 use App\Controllers\PageController;
+use App\Controllers\ToDoController;
 
 return [
     '/' => [PageController::class, 'index'],
-    '/create' => [PageController::class, 'create'],
-    '/delete' => [PageController::class, 'delete'],
-    '/complete' => [PageController::class, 'complete'],
-    '/completed' => [PageController::class, 'completed'],
+    '/create' => [ToDoController::class, 'create'],
+    '/delete' => [ToDoController::class, 'delete'],
+    '/complete' => [ToDoController::class, 'complete']
 ];

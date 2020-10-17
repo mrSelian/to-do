@@ -1,39 +1,49 @@
 <?php
 namespace App\Controllers;
-use Vendor\Interfaces\ToDoControllerInterface;
-use Vendor\Interfaces\ToDoRepositoryInterface;
 
-class ToDoController implements ToDoControllerInterface
+use App\Interfaces\ToDoAppServiceInterface;
+
+class ToDoController
 {
-    protected ToDoRepositoryInterface $toDoRepository;
+    protected ToDoAppServiceInterface $toDoAppService;
 
-    public function __construct(ToDoRepositoryInterface $toDoRepository)
+    public function __construct(ToDoAppServiceInterface $toDoAppService)
     {
-        $this->toDoRepository = $toDoRepository;
+        $this->toDoAppService=$toDoAppService;
     }
 
-    public function create(array $post)
+    public function create()
     {
-        $posts = $this->toDoRepository->getAll();
-        array_unshift($posts, $post);
-        $this->toDoRepository->saveAll($posts);
+        $this->toDoAppService->create([
+            'id' => uniqid(),
+            'title' => $_POST['title'] ?? '',
+            'text' => $_POST['text'] ?? '',
+            'completed' => false,
+        ]);
+
+        header('Location: /');
+        exit;
     }
 
-    public function complete($index)
+    public function complete()
     {
-        $posts = $this->toDoRepository->getAll();
-        foreach ($posts as $prop => &$post){
-            if ($post['id'] == $index){
-                $post['completed'] = true;
-            }
-            $this->toDoRepository->saveAll($posts);
-        }
+        $index = $_GET['index'] ?? null;
 
+        $this->toDoAppService->complete($index);
+
+        header('Location: /');
+        exit;
     }
 
-    public function delete($index)
+    public function delete()
     {
-        $posts = $this->toDoRepository->getAll();
-        array_splice($posts, $index, 1);
-        $this->toDoRepository->saveAll($posts);
-    }}
+        $index = $_GET['index'] ?? null;
+
+        $this->toDoAppService->delete($index);
+
+        header('Location: /');
+        exit;
+    }
+
+
+}

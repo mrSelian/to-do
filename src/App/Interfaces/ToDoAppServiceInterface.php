@@ -1,6 +1,7 @@
 <?php
-namespace Vendor\Interfaces;
-interface ToDoControllerInterface
+namespace App\Interfaces;
+
+interface ToDoAppServiceInterface
 {
     public function create(array $post);
     public function complete($index);
