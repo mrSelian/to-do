@@ -22,8 +22,8 @@ class Config implements ConfigInterface
         return $this;
     }
 
-    public function get($name, $default = null)
+    public function get($name)
     {
-        return $this->items[$name] ?? $default;
+        return $this->items[$name];
     }
 }

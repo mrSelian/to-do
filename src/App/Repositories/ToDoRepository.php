@@ -2,11 +2,11 @@
 
 namespace App\Repositories;
 
-use Vendor\Interfaces\ToDoRepositoryInterface;
+use App\Interfaces\ToDoRepositoryInterface;
 
 class ToDoRepository implements ToDoRepositoryInterface
 {
-    protected $postSource;
+    protected string $postSource;
 
     public function __construct($postSource)
     {

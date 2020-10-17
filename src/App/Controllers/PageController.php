@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use Vendor\Interfaces\ToDoRepositoryInterface;
+use App\Interfaces\ToDoRepositoryInterface;
 use Vendor\Interfaces\ViewInterface;
 
 

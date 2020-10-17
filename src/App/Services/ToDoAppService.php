@@ -1,7 +1,7 @@
 <?php
 namespace App\Services;
 use App\Interfaces\ToDoAppServiceInterface;
-use Vendor\Interfaces\ToDoRepositoryInterface;
+use App\Interfaces\ToDoRepositoryInterface;
 
 class ToDoAppService implements ToDoAppServiceInterface
 

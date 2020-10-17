@@ -27,14 +27,14 @@ class Container
 
     public function make($contract)
     {
-        if (array_key_exists($contract, $this->bindings)) {
-            $contract = $this->bindings[$contract];
-        }
         if (is_callable($contract)) {
             return $contract($this);
         }
         if (is_object($contract)) {
             return $contract;
+        }
+        if (array_key_exists($contract, $this->bindings)) {
+            return $this->make($this->bindings[$contract]);
         }
         return $this->makeClass($contract);
     }

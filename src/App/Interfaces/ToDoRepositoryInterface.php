@@ -1,5 +1,5 @@
 <?php
-namespace Vendor\Interfaces;
+namespace App\Interfaces;
 interface ToDoRepositoryInterface
 {
     public function getAll();
