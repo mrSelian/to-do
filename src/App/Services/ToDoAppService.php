@@ -27,8 +27,20 @@ class ToDoAppService implements ToDoAppServiceInterface
         $posts = $this->toDoRepository->getAll();
         foreach ($posts as $prop => &$post) {
             if ($post['id'] == $index) {
-                $post['completed'] = true;
+                $post['status'] = 'Ожидает Подтверждения';
                 $post['end_date'] = date("Y-n-j");
+            }
+            $this->toDoRepository->saveAll($posts);
+        }
+    }
+
+    public function markAsVerified($index)
+    {
+        $posts = $this->toDoRepository->getAll();
+        foreach ($posts as $prop => &$post) {
+            if ($post['id'] == $index) {
+                $post['status'] = 'Завершено';
+                $post['completed'] = true;
             }
             $this->toDoRepository->saveAll($posts);
         }

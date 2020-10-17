@@ -20,6 +20,8 @@ class ToDoController
             'text' => $_POST['text'] ?? '',
             'creation_date' => date("Y-n-j"),
             'deadline_date' => $_POST['deadline_date'] ?? '',
+            'start_date'=> $_POST['start_date'] ?? '',
+            'status' => 'В очереди',
             'end_date' => '',
             'completed' => false,
         ]);

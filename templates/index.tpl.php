@@ -14,9 +14,12 @@
             <?php if ($post['completed'] == true ): ?>
                 <h2><?= $post['title'] ?></h2>
                 <div><b>Добавлено: </b><i><?= $post['creation_date'] ?></i></div>
+                <div><b>Дата начала: </b><i><?= $post['start_date'] ?></i></div>
                 <div><b> Завершено: </b><i><?= $post['end_date'] ?></i></div>
                 <br>
                 <div><?= $post['text'] ?></div>
+                <br>
+                <div><b>Статус: </b><i><?= $post['status'] ?></i></div>
                 <br>
                 <div><a href='/delete?index=<?= $index ?>'>Удалить задачу</a></div>
                 <br>
@@ -25,9 +28,12 @@
         <?php if ($post['completed'] == false ): ?>
             <h2><?= $post['title'] ?></h2>
                 <div><b>Добавлено: </b><i><?= $post['creation_date'] ?></i></div>
+                <div><b>Дата начала: </b><i><?= $post['start_date'] ?></i></div>
                 <div><b> Завершить до: </b><i><?= $post['deadline_date'] ?></i></div>
                 <br>
             <div><?= $post['text'] ?></div>
+                <br>
+                <div><b>Статус: </b><i><?= $post['status'] ?></i></div>
                 <br>
             <div><a href='/complete?index=<?= $post['id'] ?>'>Завершить задачу</a></div>
             <div><a href='/delete?index=<?= $index ?>'>Удалить задачу</a></div>
@@ -43,6 +49,10 @@
         <input type="text" name="title" placeholder="Заголовок TO-DO">
         <br>
         <textarea name="text" placeholder="Текст" cols="22" rows="6"> </textarea>
+        <br>
+        <label for="date">Дата начала выполнения: </label>
+        <br>
+        <input type="date" id="date" name="start_date"/>
         <br>
         <label for="date">Завершить до: </label>
         <br>
