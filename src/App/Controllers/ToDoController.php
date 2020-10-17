@@ -18,6 +18,9 @@ class ToDoController
             'id' => uniqid(),
             'title' => $_POST['title'] ?? '',
             'text' => $_POST['text'] ?? '',
+            'creation_date' => date("Y-n-j"),
+            'deadline_date' => $_POST['deadline_date'] ?? '',
+            'end_date' => '',
             'completed' => false,
         ]);
 

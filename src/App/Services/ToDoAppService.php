@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Services;
+
 use App\Interfaces\ToDoAppServiceInterface;
 use App\Interfaces\ToDoRepositoryInterface;
 
@@ -23,14 +25,15 @@ class ToDoAppService implements ToDoAppServiceInterface
     public function complete($index)
     {
         $posts = $this->toDoRepository->getAll();
-        foreach ($posts as $prop => &$post){
-            if ($post['id'] == $index){
+        foreach ($posts as $prop => &$post) {
+            if ($post['id'] == $index) {
                 $post['completed'] = true;
+                $post['end_date'] = date("Y-n-j");
             }
             $this->toDoRepository->saveAll($posts);
         }
-
     }
+
     public function delete($index)
     {
         $posts = $this->toDoRepository->getAll();

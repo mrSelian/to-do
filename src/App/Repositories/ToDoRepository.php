@@ -21,7 +21,7 @@ class ToDoRepository implements ToDoRepositoryInterface
     public function getById($id)
     {
         $posts = $this->getAll();
-        foreach ($posts as $post) {
+        foreach ($posts as &$post) {
             if ($post['id'] == $id) return $post;
         }
         return null;

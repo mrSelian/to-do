@@ -12,18 +12,27 @@
     <?php foreach ($posts as $index => $post): ?>
     <?php if (isset($_GET['completed'])): ?>
             <?php if ($post['completed'] == true ): ?>
-                <h3><?= $post['title'] ?></h3>
+                <h2><?= $post['title'] ?></h2>
+                <div><b>Добавлено: </b><i><?= $post['creation_date'] ?></i></div>
+                <div><b> Завершено: </b><i><?= $post['end_date'] ?></i></div>
+                <br>
                 <div><?= $post['text'] ?></div>
+                <br>
                 <div><a href='/delete?index=<?= $index ?>'>Удалить задачу</a></div>
                 <br>
     <?php endif; ?>
         <?php else: ?>
         <?php if ($post['completed'] == false ): ?>
-            <h3><?= $post['title'] ?></h3>
+            <h2><?= $post['title'] ?></h2>
+                <div><b>Добавлено: </b><i><?= $post['creation_date'] ?></i></div>
+                <div><b> Завершить до: </b><i><?= $post['deadline_date'] ?></i></div>
+                <br>
             <div><?= $post['text'] ?></div>
+                <br>
             <div><a href='/complete?index=<?= $post['id'] ?>'>Завершить задачу</a></div>
             <div><a href='/delete?index=<?= $index ?>'>Удалить задачу</a></div>
             <br>
+                <br>
 
         <?php endif; ?>
         <?php endif; ?>
@@ -34,6 +43,10 @@
         <input type="text" name="title" placeholder="Заголовок TO-DO">
         <br>
         <textarea name="text" placeholder="Текст" cols="22" rows="6"> </textarea>
+        <br>
+        <label for="date">Завершить до: </label>
+        <br>
+        <input type="date" id="date" name="deadline_date"/>
         <br>
         <input type="submit" value="Создать">
     </form>
