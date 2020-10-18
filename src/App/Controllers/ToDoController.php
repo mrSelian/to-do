@@ -49,6 +49,15 @@ class ToDoController
         header('Location: /');
         exit;
     }
+    public function verify()
+    {
+        $index = $_GET['index'] ?? null;
+
+        $this->toDoAppService->verify($index);
+
+        header('Location: /');
+        exit;
+    }
 
 
 }

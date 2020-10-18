@@ -35,11 +35,15 @@
                 <br>
                 <div><b>Статус: </b><i><?= $post['status'] ?></i></div>
                 <br>
+    <?php if ($post['status'] == 'Ожидает Подтверждения' ): ?>
+    <div><a href='/verify?index=<?= $post['id'] ?>'>Подтвердить выполнение</a></div>
+    <div><a href='/delete?index=<?= $index ?>'>Удалить задачу</a></div>
+    <?php else: ?>
             <div><a href='/complete?index=<?= $post['id'] ?>'>Завершить задачу</a></div>
             <div><a href='/delete?index=<?= $index ?>'>Удалить задачу</a></div>
             <br>
                 <br>
-
+                <?php endif; ?>
         <?php endif; ?>
         <?php endif; ?>
     <?php endforeach; ?>

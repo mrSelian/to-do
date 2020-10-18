@@ -7,5 +7,6 @@ return [
     '/' => [PageController::class, 'index'],
     '/create' => [ToDoController::class, 'create'],
     '/delete' => [ToDoController::class, 'delete'],
-    '/complete' => [ToDoController::class, 'complete']
+    '/complete' => [ToDoController::class, 'complete'],
+    '/verify' => [ToDoController::class, 'verify']
 ];

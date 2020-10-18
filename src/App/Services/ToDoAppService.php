@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Interfaces\ToDoAppServiceInterface;
 use App\Interfaces\ToDoRepositoryInterface;
+use App\ToDo;
 
 class ToDoAppService implements ToDoAppServiceInterface
 
@@ -27,6 +28,8 @@ class ToDoAppService implements ToDoAppServiceInterface
         $posts = $this->toDoRepository->getAll();
         foreach ($posts as $prop => &$post) {
             if ($post['id'] == $index) {
+                $todo = new ToDo($post);
+                $todo->completable();
                 $post['status'] = 'Ожидает Подтверждения';
                 $post['end_date'] = date("Y-n-j");
             }
@@ -34,11 +37,13 @@ class ToDoAppService implements ToDoAppServiceInterface
         }
     }
 
-    public function markAsVerified($index)
+    public function verify($index)
     {
         $posts = $this->toDoRepository->getAll();
         foreach ($posts as $prop => &$post) {
             if ($post['id'] == $index) {
+                $todo = new ToDo($post);
+                $todo->verifiable();
                 $post['status'] = 'Завершено';
                 $post['completed'] = true;
             }
@@ -49,8 +54,15 @@ class ToDoAppService implements ToDoAppServiceInterface
     public function delete($index)
     {
         $posts = $this->toDoRepository->getAll();
+        foreach ($posts as $prop => &$post) {
+            if ($post['id'] == $index) {
+                $todo = new ToDo($post);
+                $todo->deletable();
+            }
+        }
         array_splice($posts, $index, 1);
         $this->toDoRepository->saveAll($posts);
+
     }
 
 }
